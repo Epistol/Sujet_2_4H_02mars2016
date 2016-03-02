@@ -4,12 +4,22 @@
 
 
 
-struct enreg_produit espacer;
+struct enreg_produit // enregistrement de mon fichier produit
+
+{
+
+int numero;
+
+char libelle[255];
+
+float prix;
+
+} espacer;
 char visual_ok;
 
 
 
-void creation_produit() {
+void creation_produit(fichier) {
 
 	int continuer;
 	continuer = 0;
@@ -20,7 +30,7 @@ void creation_produit() {
 	int position, taille;
 
 
-	printf("Voulez-vous visualiser la liste des fichiers ? (O/N)");
+	printf("Voulez-vous visualiser la liste des fichiers ? (O/N) \n");
 	visual_ok = getch();
 	if (visual_ok == 'O' || visual_ok == 'o') {
 			visualisation_produit();
@@ -46,7 +56,7 @@ void creation_produit() {
 
 					printf("Voulez-vous continuer ? (O/N) ");
 
-					cin >> choix_continue;
+					choix_continue = getch();
 					if (choix_continue == 'O' || choix_continue == 'o') {
 							continuer = 0;
 
@@ -70,7 +80,7 @@ void annulation_produit() {
 	}
 void visualisation_produit() {
 
-	string ligne;
+	char ligne;
 	int sum;
 
 
@@ -86,24 +96,26 @@ void visualisation_produit() {
 
 
 
-void choix() {
+void choix(fichier) {
 
-	int choisi = NULL;
+	int choisi;
+	choisi = 0;
 
-	while (choisi == NULL) {
-			printf("GESTION DES PRODUITS");
-			printf("1 -> Creation d'un produit");
-			printf("2 -> Modification d'un produit");
-			printf("3 -> Annulation d'un produit");
-			printf("4 -> Visualisation d'un produit");
-			printf("\n Choix : ";
-			choisi = getch();
+
+	while (choisi == 0) {
+			printf("GESTION DES PRODUITS\n\n");
+			printf("1 -> Creation d'un produit \n");
+			printf("2 -> Modification d'un produit\n");
+			printf("3 -> Annulation d'un produit\n");
+			printf("4 -> Visualisation d'un produit\n");
+			printf("\n Choix : ");
+			scanf("%d", &choisi);
 
 
 			switch (choisi) {
 
 					case 1 :
-						creation_produit();
+						creation_produit(fichier);
 						break;
 					case 2 :
 						modification_produit();
@@ -135,7 +147,7 @@ int main() {
 
 fichier =  fopen("produit.dat","r+");
 
-			choix();
+			choix(fichier);
 
 	}
 
