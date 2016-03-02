@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1456913341 source:c:\users\gl552jx\documents\exo2_4h\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"graphics.hpp"
+	"fonctions.hpp"
+
+1456904277 c:\users\gl552jx\documents\exo2_4h\graphics.hpp
+	<windows.h>
+	<conio.h>
+	<iostream>
+	<string>
+	<fstream>
+	<stdlib.h>
+
+1456913297 c:\users\gl552jx\documents\exo2_4h\fonctions.hpp
+	<windows.h>
+	<conio.h>
+	<iostream>
+	<string>
+	<fstream>
+	<stdlib.h>
+
