@@ -21,6 +21,9 @@ char visual_ok;
 
 void creation_produit(fichier) {
 
+
+
+
 	int continuer;
 	continuer = 0;
 	char choix_continue;
@@ -41,16 +44,15 @@ void creation_produit(fichier) {
 			while (continuer == 0) {
 
 
-
+fichier =  fopen("produit.dat","w");
 
 
 					printf("CREATION \n");
 					printf("Numero ");
-					numero = getch();
-					printf("%d", &numero);
+					scanf("%d", &numero);
+					fputs(numero, &fichier);
 
-
-					printf("Libelle : ");
+					printf("\n Libelle : ");
 					scanf("%s", libelle);
 					fputs(libelle, fichier);
 
@@ -63,6 +65,7 @@ void creation_produit(fichier) {
 
 							}
 					else {
+							fclose(fichier);
 							continuer = 1;
 							}
 					}
@@ -146,7 +149,7 @@ int main() {
 
     FILE* fichier = NULL;
 
-fichier =  fopen("produit.dat","r+");
+
 
 			choix(fichier);
 
