@@ -47,10 +47,11 @@ void creation_produit(fichier) {
 					printf("CREATION \n");
 					printf("Numero ");
 					numero = getch();
+					printf("%d", &numero);
 
 
 					printf("Libelle : ");
-					scanf("%s", &libelle);
+					scanf("%s", libelle);
 					fputs(libelle, fichier);
 
 
