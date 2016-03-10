@@ -33,9 +33,6 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="graphics.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="include/graphics.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />

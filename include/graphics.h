@@ -1,11 +1,6 @@
 #ifndef GRAPHICS_H_INCLUDED
 #define GRAPHICS_H_INCLUDED
 
-#include <windows.h> // bibliothËque contenant des routines sur l'affichage windows.
-#include <conio.h>
-
-#include <stdlib.h>
-
 
 
 

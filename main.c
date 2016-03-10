@@ -1,17 +1,21 @@
-#include<stdio.h>
-#include<conio.h>
-#include<stdlib.h>
-#include<io.h>
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <io.h>
 
 
-typedef struct enreg_produit { // enregistrement de mon fichier produit
+struct enreg_produit { // enregistrement de mon fichier produit
 	int numero;
 	char libelle[255];
 	float prix;
-	} produit;
+	};
+
+typedef struct enreg_produit produit;
 
 
-void creation_produit (fichier);
+
+
+void creation_produit (fichier, produit *cptr);
 void modification_produit();
 void annulation_produit();
 void visualisation_produit();
@@ -21,7 +25,7 @@ void visualisation_produit();
 
 
 
-void creation_produit (FILE * fichier) {
+void creation_produit (FILE * fichier, produit *cptr) {
 
 
 
@@ -29,9 +33,6 @@ void creation_produit (FILE * fichier) {
 	int continuer, visual_ok, position, taille;
 	continuer = 0;
 	char choix_continue;
-	char libelle[255];
-	int numero;
-	float prix;
 
 
 	printf ("Voulez-vous visualiser la liste des fichiers ? (O/N) \n");
@@ -54,12 +55,13 @@ void creation_produit (FILE * fichier) {
 
 					printf ("CREATION \n");
 					printf ("Numero ");
-					scanf ("%d", &numero);
-					fprintf (fichier, "%d", numero);
-
+					scanf ("%d", &cptr.numero);
 					printf ("\n Libelle : ");
-					scanf ("%s", &libelle);
-					fprintf (fichier, "%s" , libelle);
+					scanf ("%d", &cptr.libelle);
+					printf ("\n Prix : ");
+					scanf ("%f", &cptr.prix);
+
+					fprintf(fichier, "%d\t%d\t%s\t%f\n", cptr.numero, cptr.libelle, cptr.numero);
 
 
 					printf ("Voulez-vous continuer ? (O/N) ");
@@ -114,17 +116,13 @@ int main() {
 
 
 	char visual_ok;
-
-
-
 	FILE * fichier;
-
-
-
-
-
 	int choisi;
 	choisi = 0;
+
+
+	produit UnProduit;
+	unProduit *cptr = &UnProduit;
 
 
 	while (choisi == 0) {
@@ -140,7 +138,7 @@ int main() {
 			switch (choisi) {
 
 					case 1 :
-						creation_produit (fichier);
+						UnProduit = creation_produit (fichier, cptr);
 						break;
 					case 2 :
 						modification_produit();
