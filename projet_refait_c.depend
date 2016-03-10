@@ -1,5 +1,7 @@
 # depslib dependency file v1.0
-1456915581 source:c:\users\gl552jx\documents\projet_refait_c\main.c
+1457651131 source:c:\users\gl552jx\documents\projet_refait_c\main.c
 	<stdio.h>
+	<conio.h>
 	<stdlib.h>
+	<io.h>
 

@@ -1,40 +1,42 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<io.h>
 
 
-
-
-struct enreg_produit // enregistrement de mon fichier produit
-
-{
-
-int numero;
-
-char libelle[255];
-
-float prix;
-
-} espacer;
-char visual_ok;
-
-
-
-void creation_produit(fichier) {
-
-
-
-
-	int continuer;
-	continuer = 0;
-	char choix_continue;
+typedef struct enreg_produit { // enregistrement de mon fichier produit
 	int numero;
 	char libelle[255];
 	float prix;
-	int position, taille;
+	} produit;
 
 
-	printf("Voulez-vous visualiser la liste des fichiers ? (O/N) \n");
+void creation_produit (fichier);
+void modification_produit();
+void annulation_produit();
+void visualisation_produit();
+
+
+
+
+
+
+void creation_produit (FILE * fichier) {
+
+
+
+
+	int continuer, visual_ok, position, taille;
+	continuer = 0;
+	char choix_continue;
+	char libelle[255];
+	int numero;
+	float prix;
+
+
+	printf ("Voulez-vous visualiser la liste des fichiers ? (O/N) \n");
 	visual_ok = getch();
+
 	if (visual_ok == 'O' || visual_ok == 'o') {
 			visualisation_produit();
 			}
@@ -44,20 +46,23 @@ void creation_produit(fichier) {
 			while (continuer == 0) {
 
 
-fichier =  fopen("produit.dat","w");
+					fichier =  fopen ("produit.dat", "a+");
 
 
-					printf("CREATION \n");
-					printf("Numero ");
-					scanf("%d", &numero);
-					fputs(numero, &fichier);
-
-					printf("\n Libelle : ");
-					scanf("%s", libelle);
-					fputs(libelle, fichier);
+					fseek (fichier, 1, SEEK_END);
 
 
-					printf("Voulez-vous continuer ? (O/N) ");
+					printf ("CREATION \n");
+					printf ("Numero ");
+					scanf ("%d", &numero);
+					fprintf (fichier, "%d", numero);
+
+					printf ("\n Libelle : ");
+					scanf ("%s", &libelle);
+					fprintf (fichier, "%s" , libelle);
+
+
+					printf ("Voulez-vous continuer ? (O/N) ");
 
 					choix_continue = getch();
 					if (choix_continue == 'O' || choix_continue == 'o') {
@@ -65,7 +70,7 @@ fichier =  fopen("produit.dat","w");
 
 							}
 					else {
-							fclose(fichier);
+							fclose (fichier);
 							continuer = 1;
 							}
 					}
@@ -100,26 +105,42 @@ void visualisation_produit() {
 
 
 
-void choix(fichier) {
+
+
+
+
+
+int main() {
+
+
+	char visual_ok;
+
+
+
+	FILE * fichier;
+
+
+
+
 
 	int choisi;
 	choisi = 0;
 
 
 	while (choisi == 0) {
-			printf("GESTION DES PRODUITS\n\n");
-			printf("1 -> Creation d'un produit \n");
-			printf("2 -> Modification d'un produit\n");
-			printf("3 -> Annulation d'un produit\n");
-			printf("4 -> Visualisation d'un produit\n");
-			printf("\n Choix : ");
-			scanf("%d", &choisi);
+			printf ("GESTION DES PRODUITS\n\n");
+			printf ("1 -> Creation d'un produit \n");
+			printf ("2 -> Modification d'un produit\n");
+			printf ("3 -> Annulation d'un produit\n");
+			printf ("4 -> Visualisation d'un produit\n");
+			printf ("\n Choix : ");
+			scanf ("%d", &choisi);
 
 
 			switch (choisi) {
 
 					case 1 :
-						creation_produit(fichier);
+						creation_produit (fichier);
 						break;
 					case 2 :
 						modification_produit();
@@ -131,7 +152,7 @@ void choix(fichier) {
 						visualisation_produit();
 						break;
 					default :
-						printf("Choisissez une option de 1 a 4 avec des chiffres \n");
+						printf ("Choisissez une option de 1 a 4 avec des chiffres \n");
 						choisi = NULL;
 						break;
 
@@ -141,17 +162,8 @@ void choix(fichier) {
 			}
 
 
-	}
 
 
-
-int main() {
-
-    FILE* fichier = NULL;
-
-
-
-			choix(fichier);
 
 	}
 
